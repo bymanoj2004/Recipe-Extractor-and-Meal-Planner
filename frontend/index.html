@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Extractor & Meal Planner</title>
+    <meta name="description" content="AI powered recipe extraction and meal planning tool.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="header-logo">
+                <h1>Taste<span class="accent">Sync</span></h1>
+                <p>AI Recipe Extractor</p>
+            </div>
+            <nav class="tabs">
+                <button class="tab active" data-tab="extract">Extract</button>
+                <button class="tab" data-tab="history">History</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- TAB 1: Extract Recipe -->
+            <section id="extract" class="tab-content active">
+                <div class="glass-card extract-box">
+                    <h2>Extract New Recipe</h2>
+                    <p>Paste a blog URL to magically extract the ingredients and instructions.</p>
+                    <div class="input-group">
+                        <input type="url" id="recipe-url" placeholder="https://www.example.com/recipe/..." required>
+                        <button id="extract-btn" class="primary-btn">Magic Extract ✨</button>
+                    </div>
+                    <div id="error-message" class="hidden error"></div>
+                </div>
+
+                <div id="loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Analyzing with Gemini...</p>
+                </div>
+
+                <!-- Recipe Display -->
+                <div id="recipe-display" class="hidden">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- TAB 2: History -->
+            <section id="history" class="tab-content">
+                <div class="glass-card history-box">
+                    <h2>Saved Recipes</h2>
+                    <div class="table-container">
+                        <table id="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Cuisine</th>
+                                    <th>Difficulty</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="recipe-modal" class="modal hidden">
+        <div class="modal-content glass-card">
+            <button class="close-btn">&times;</button>
+            <div id="modal-recipe-display">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

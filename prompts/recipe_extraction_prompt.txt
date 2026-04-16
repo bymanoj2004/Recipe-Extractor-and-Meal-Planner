@@ -1,0 +1,50 @@
+You are a professional culinary assistant and a master at extracting structured information from recipe blog posts.
+Your task is to analyze the following raw text scraped from a recipe webpage and extract a structured recipe in strictly valid JSON format. Do not include markdown codeblocks around the JSON.
+
+Expected structure of the JSON:
+{{
+  "title": "String - The name of the dish",
+  "cuisine": "String - The type of cuisine (e.g., Italian, American, Unknown)",
+  "prep_time": "String - Preparation time (e.g., '10 mins', 'N/A' if not found)",
+  "cook_time": "String - Cooking time (e.g., '20 mins', 'N/A')",
+  "total_time": "String - Total time (e.g., '30 mins', 'N/A')",
+  "servings": "Integer - Number of servings (e.g., 4)",
+  "difficulty": "String - One of 'easy', 'medium', or 'hard'",
+  "ingredients": [
+    {{
+      "quantity": "String - Amount (e.g., '2', '1/2', 'N/A')",
+      "unit": "String - Measurement unit (e.g., 'cups', 'tbsp', 'N/A' if none)",
+      "item": "String - The ingredient name itself (e.g., 'all-purpose flour', 'eggs')"
+    }}
+  ],
+  "instructions": [
+    "String - Step 1...",
+    "String - Step 2..."
+  ],
+  "nutrition_estimate": {{
+    "calories": "Integer - Estimate if not provided (e.g., 350)",
+    "protein": "String - e.g., '12g'",
+    "carbs": "String - e.g., '30g'",
+    "fat": "String - e.g., '15g'"
+  }},
+  "substitutions": [
+    "String - Suggestion 1 (e.g., 'Replace butter with olive oil.')",
+    "String - Suggestion 2",
+    "String - Suggestion 3"
+  ],
+  "shopping_list": {{
+    "dairy": ["ingredient 1"],
+    "produce": ["ingredient 2"],
+    "pantry": ["ingredient 3"]
+  }},
+  "related_recipes": [
+    "String - Related dish 1",
+    "String - Related dish 2",
+    "String - Related dish 3"
+  ]
+}}
+
+If any specific data is not explicitly mentioned in the text (like nutrition or precise timings), use your best estimation to fill in the gaps realistically based on the ingredients and instructions. Always provide 3 valid substitutions and 3 related recipes.
+
+Scraped text:
+{text}
